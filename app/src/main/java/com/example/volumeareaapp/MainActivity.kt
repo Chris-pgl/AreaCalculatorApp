@@ -1,5 +1,6 @@
 package com.example.volumeareaapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.GridView
 import androidx.activity.enableEdgeToEdge
@@ -34,5 +35,27 @@ class MainActivity : AppCompatActivity() {
         val myCustomAdapter = MyCustomAdapter(this, shapesArrayList)
         gridView.adapter = myCustomAdapter
         gridView.numColumns = 2
+
+        //onclick su sphere
+        gridView.setOnItemClickListener { parent, view, position, id ->
+            when (position) {
+                0 -> {
+                    val i = Intent(this, SphereActivity::class.java)
+                    startActivity(i)
+                }
+                1 -> {
+                    val i = Intent(this, Cylinder_Activity::class.java)
+                    startActivity(i)
+                }
+                2 -> {
+                    val i = Intent(this, Cube_Activity::class.java)
+                    startActivity(i)
+                }
+                3 -> {
+                    val i = Intent(this, Prism_Activity::class.java)
+                    startActivity(i)
+                }
+            }
+        }
     }
 }
