@@ -32,13 +32,21 @@ class MyCustomAdapter(
 
     override fun getView(
         position: Int,
+        //converView è una view dello screen che se esiste viene riciclata
+        // se no ne creiamo una nuova ( quindi controlleremo se è null )
         convertView: View?,
         parent: ViewGroup
     ): View {
+
         val view: View
         val holder: MyViewHolder
 
+        //Qui controlliamo se la view è nulla o no
+        //per poterla ricilare nel caso ci c'è già una view creata
         if(convertView == null){
+            //controlliamo la view se è nulla viene creata una nuova
+            //Usiamo LayoutInflate è un componente importante del framework Android
+            //gestisce la UI consente di definire la struttura della UI e il suo aspetto
             view = LayoutInflater.from(context)
                 .inflate(R.layout.grid_item_layout,parent,false)
 
@@ -49,7 +57,7 @@ class MyCustomAdapter(
 
             view.tag = holder
         }else{
-
+            //se una view è fuori schermo -> viene riciclata
             view = convertView
             holder = view.tag as MyViewHolder
         }
